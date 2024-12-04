@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #000 70%, rgba(0, 0, 0, 0.8) 80%, rgba(31, 31, 85, 0.7) 90%, rgba(58, 137, 255, 0.5) 100%);
+    box-shadow: 0 0 50px rgba(58, 137, 255, 0.7), 
+                0 0 100px rgba(31, 31, 85, 0.5);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 50px rgba(58, 137, 255, 0.7), 
+                    0 0 100px rgba(31, 31, 85, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 70px rgba(58, 137, 255, 0.9), 
+                    0 0 120px rgba(31, 31, 85, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 50px rgba(58, 137, 255, 0.7), 
+                    0 0 100px rgba(31, 31, 85, 0.5);
+    }
+}
+
+.explosion {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 255, 0.8), rgba(58, 137, 255, 0.6), rgba(0, 0, 128, 0));
+    width: 500px;
+    height: 500px;
+    animation: explode 3s forwards ease-out, glowEffect 2s infinite alternate;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 5;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.6), 0 0 100px rgba(31, 31, 85, 0.3); /* Glow around explosion */
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(8);
+        opacity: 0;
+    }
+}
+
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.7), 0 0 100px rgba(31, 31, 85, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 80px rgba(255, 255, 255, 1), 0 0 150px rgba(31, 31, 85, 0.8);
+    }
+}
+
+/* Particle styles */
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 1); /* White particles */
+    animation: particleMove 5s ease-out forwards, rotateParticle 2s infinite linear;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes particleMove {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(0.2);
+        opacity: 0;
+    }
+}
+
+
+
+/* Aftermath smoke effect */
+.smoke {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: smokeEffect 4s forwards ease-out;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes smokeEffect {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Wave effect */
+@keyframes waveEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
