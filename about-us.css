@@ -142,10 +142,6 @@
     border-radius: 5px;
 }
 
-.info-box:hover{
-    overflow: hidden;
-}
-
 .card-container:hover .info-box {
     opacity: 1;
     transform: translate3d(0%, -30%, 100px);
